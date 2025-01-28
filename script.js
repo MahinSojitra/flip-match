@@ -42,7 +42,7 @@ const restartBtn = document.getElementById("restartBtn");
 const reloadBtnContainer = document.getElementById("reloadBtnContainer");
 
 function shuffleIcons() {
-  cards.sort(() => Math.random() - Math.random());
+  cards.sort(() => Math.random() - 0.5);
 }
 
 function getRandomIcons(iconList, numIcons) {
@@ -187,6 +187,7 @@ restartBtn.addEventListener("click", () => {
   location.reload();
 });
 
+shuffleIcons();
 createCards();
 updateCardFlips();
 
