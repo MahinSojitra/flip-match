@@ -32,7 +32,7 @@ const allIcons = [
 
 const icons = getRandomIcons(allIcons, 8);
 const cards = [...icons, ...icons];
-const fixedFlips = Math.floor(Math.random() * (50 - 18 + 1)) + 18;
+const fixedFlips = Math.floor(Math.random() * ((50 - 18) / 2 + 1)) * 2 + 18;
 let flippedCards = [];
 let score = 0;
 let totalFlips = 0;
