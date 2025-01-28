@@ -36,7 +36,10 @@ const fixedFlips = Math.floor(Math.random() * ((50 - 18) / 2 + 1)) * 2 + 18;
 let flippedCards = [];
 let score = 0;
 let totalFlips = 0;
-const hr = document.getElementById("hr");
+const hrUpper = document.getElementById("hr-upper");
+const hrLower = document.getElementById("hr-lower");
+const restartBtn = document.getElementById("restartBtn");
+const reloadBtnContainer = document.getElementById("reloadBtnContainer");
 
 function shuffleIcons() {
   cards.sort(() => Math.random() - Math.random());
@@ -74,6 +77,9 @@ function createCards() {
 }
 
 function showWinningMessage() {
+  hrLower.remove();
+  reloadBtnContainer.remove();
+
   const gameContainer = document.getElementById("gameContainer");
   const message = document.createElement("div");
   message.classList.add(
@@ -96,8 +102,10 @@ function showWinningMessage() {
 function showGameOverMessage() {
   let cardFlipsStatus = document.getElementById("cardFlipsStatus");
   cardFlipsStatus.remove();
-  hr.classList.remove("my-2");
-  hr.classList.add("mt-2", "mb-4");
+  hrUpper.classList.remove("my-2");
+  hrUpper.classList.add("mt-2", "mb-4");
+  hrLower.classList.remove("my-2");
+  hrLower.classList.add("mb-2", "mt-4");
 
   const gameContainer = document.getElementById("gameContainer");
   const message = document.createElement("div");
@@ -114,7 +122,6 @@ function showGameOverMessage() {
   <p class="fs-1 mb-0">😬</p>
   <h3 class="mt-0">Game Over!</h3>
   <p class="text-muted fs-6 mt-0 mb-3">You’ve run out of flips! No more moves left.</p>
-  <button class="btn btn-sm btn-warning mx-auto w-auto" onclick="location.reload()">Try Again?</button>
   `;
   gameContainer.replaceWith(message);
 }
@@ -176,9 +183,16 @@ function checkMatch() {
   }
 }
 
-if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-  shuffleIcons();
-}
+restartBtn.addEventListener("click", () => {
+  location.reload();
+});
 
 createCards();
 updateCardFlips();
+
+const tooltipTriggerList = document.querySelectorAll(
+  '[data-bs-toggle="tooltip"]'
+);
+const tooltipList = [...tooltipTriggerList].map(
+  (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+);

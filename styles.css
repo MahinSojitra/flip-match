@@ -18,6 +18,10 @@ body {
   max-width: 500px;
 }
 
+.icon-size {
+  font-size: 1.5rem;
+}
+
 .card {
   perspective: 1000px;
 }
@@ -63,4 +67,8 @@ body {
   margin-bottom: 20px;
   font-size: 1.5rem;
   text-align: center;
+}
+
+.pointer {
+  cursor: pointer;
 }
