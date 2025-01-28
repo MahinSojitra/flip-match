@@ -41,7 +41,7 @@ const hrLower = document.getElementById("hr-lower");
 const restartBtn = document.getElementById("restartBtn");
 const reloadBtnContainer = document.getElementById("reloadBtnContainer");
 
-function shuffleIcons() {
+function shuffleCards() {
   cards.sort(() => Math.random() - 0.5);
 }
 
@@ -187,7 +187,7 @@ restartBtn.addEventListener("click", () => {
   location.reload();
 });
 
-shuffleIcons();
+shuffleCards();
 createCards();
 updateCardFlips();
 
