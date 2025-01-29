@@ -18,6 +18,14 @@ body {
   max-width: 500px;
 }
 
+.card-scale-up {
+  transform: scale(1.1);
+}
+
+.card-blur {
+  filter: blur(2px);
+}
+
 .icon-size {
   font-size: 1.5rem;
 }
@@ -71,4 +79,36 @@ body {
 
 .pointer {
   cursor: pointer;
+}
+
+@keyframes hint-transition {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-8px);
+  }
+}
+
+.hint-card-transition {
+  animation: hint-transition 0.6s linear;
+  animation-iteration-count: 2;
+}
+
+.btn-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.btn-activated {
+  cursor: pointer;
+  pointer-events: all;
+  opacity: 1;
 }
